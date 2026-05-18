@@ -91,7 +91,7 @@ const sublinkClass = `flex items-center gap-[var(--m)] h-max
     <!-- Header -->
     <div class="flex items-center gap-[var(--m)] border-b border-line pb-[var(--m)]">
       <div class="p-[var(--xxs)] bg-white rounded-full">
-        <img class="max-w-[20px] max-h-[20px] min-w-[20px] min-h-[20px] object-contain" alt="logo" src="../../../../iamra-logo.svg">
+        <img class="max-w-[20px] max-h-[20px] min-w-[20px] min-h-[20px] object-contain" alt="logo" src="/iamra-logo.svg">
       </div>
       <div :class="['font-bold text-[var(--l)]', props.isSidebarCollapsed ? 'hidden' : '']">Iamra</div>
     </div>
