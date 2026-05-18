@@ -66,7 +66,7 @@ export default defineConfig(({ mode, command }) => {
     build: {
       outDir: 'dist',
       sourcemap: !isProduction,
-      minify: isProduction ? 'terser' : false,
+      minify: isProduction,
 
       rollupOptions: {
         output: {
@@ -83,13 +83,6 @@ export default defineConfig(({ mode, command }) => {
           }
         }
       },
-
-      terserOptions: isProduction ? {
-        compress: {
-          drop_console: true,
-          drop_debugger: true
-        }
-      } : undefined,
 
       chunkSizeWarningLimit: 1000
     },
