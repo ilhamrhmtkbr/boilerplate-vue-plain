@@ -68,17 +68,22 @@ export default defineConfig((mode, command) => {
       sourcemap: !isProduction,
       minify: isProduction ? 'terser' : false,
 
-      // Chunk splitting for better caching
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['vue'],
-            router: ['vue-router'],
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('vue-router')) {
+                return 'router'
+              }
+
+              if (id.includes('vue')) {
+                return 'vendor'
+              }
+            }
           }
         }
       },
 
-      // Build optimizations
       terserOptions: isProduction ? {
         compress: {
           drop_console: true,
@@ -86,7 +91,6 @@ export default defineConfig((mode, command) => {
         }
       } : undefined,
 
-      // Size warnings
       chunkSizeWarningLimit: 1000
     },
 
