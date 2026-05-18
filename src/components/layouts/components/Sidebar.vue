@@ -10,6 +10,8 @@ const props = defineProps({
 
 const emit = defineEmits(['toggle'])
 
+const spriteUrl = `${import.meta.env.BASE_URL}sprite.svg`
+
 const toggleSidebar = () => {
   emit('toggle')
 }
@@ -111,7 +113,7 @@ const sublinkClass = `flex items-center gap-[var(--m)] h-max
             :data-title="item.text"
         >
           <svg :class="['max-w-[var(--l)] max-h-[var(--l)] fill-scrollthumb group-hover:fill-secondary', sidebarLinkActiveSvg(item.to)]">
-            <use :href="`/sprite.svg#${item.svg}`"></use>
+            <use :href="`${spriteUrl}#${item.svg}`"></use>
           </svg>
           <span :class="['group-hover:text-secondary', props.isSidebarCollapsed ? 'hidden' : '']">{{ item.text }}</span>
         </router-link>
@@ -127,7 +129,7 @@ const sublinkClass = `flex items-center gap-[var(--m)] h-max
               :data-title="item.text"
           >
             <svg :class="['max-w-[var(--l)] max-h-[var(--l)] fill-scrollthumb group-hover:fill-secondary', sidebarLinkActiveSvg(item.to)]">
-              <use :href="`/sprite.svg#${item.svg}`"></use>
+              <use :href="`${spriteUrl}#${item.svg}`"></use>
             </svg>
             <span :class="['group-hover:text-secondary', props.isSidebarCollapsed ? 'hidden' : '']">{{ item.text }}</span>
           </summary>
@@ -141,7 +143,7 @@ const sublinkClass = `flex items-center gap-[var(--m)] h-max
                 :data-title="child.text"
             >
               <svg :class="['max-w-[var(--l)] max-h-[var(--l)] fill-scrollthumb group-hover:fill-secondary', sidebarLinkActiveSvg(item.to)]">
-                <use :href="`/sprite.svg#${child.svg}`"></use>
+                <use :href="`${spriteUrl}#${child.svg}`"></use>
               </svg>
               <span :class="['group-hover:text-secondary', props.isSidebarCollapsed ? 'hidden' : '']">{{ child.text }}</span>
             </router-link>

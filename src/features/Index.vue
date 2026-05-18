@@ -2,13 +2,20 @@
 import {computed, ref} from "vue";
 // ======== Setup Component ========
 const rawCodes = import.meta.glob('../components/**/*.vue', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true
 })
+
 const codeMap = {}
 
 for (const path in rawCodes) {
-  const name = path.split('/').pop().replace('.vue', '').toLowerCase()
+  const name = path
+    .split('/')
+    .pop()
+    .replace('.vue', '')
+    .toLowerCase()
+
   codeMap[name] = rawCodes[path]
 }
 // ======== Setup Component ========
